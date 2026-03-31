@@ -6,8 +6,10 @@ double* fillArray(int&);
 
 int main()
 {
-    /* start here*/
+  
     int size;
+    double* arrPtr = fillArray(size); 
+    /*start here
     cout << "How many spaces do you want to allocate in the array? ";
     cin >> size;
 
@@ -34,15 +36,12 @@ int main()
         *(arrPtr + indx) = val;
         //arrPtr[indx] = val;
     }
-     /* to here go inside fill array */
+     to here go inside fill array */
     
-    double* arrPtr = fillArray(size);
     printArray(arrPtr, size);
     // one more key step here for dynmically allocated memory
     delete [] arrPtr;  
     // if you forget this, then "memory leak" 
-
-
     return 0;  
 
 }
@@ -54,4 +53,19 @@ void printArray(double* arr, int size)
         cout << arr[ind] << " ";
     }
     cout << endl;
+}
+
+double* fillArray(int& size) 
+{
+    cout << "How many spaces in the array: ";
+    cin >> size;
+
+    double* ptr = new double[size]; 
+    for (int ind = 0; ind < size; ind++) 
+    {
+        cout << "Enter the value for index " << ind << ": ";
+        cin >> ptr[ind];
+    }
+    
+    return ptr; 
 }
